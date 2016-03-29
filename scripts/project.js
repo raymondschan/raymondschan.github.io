@@ -159,6 +159,7 @@ var objectInitializer = function(parentElement) {
 };
 
 $(document).ready(function() {
+	// Load modules and widgets
 	objectInitializer($('body'));
 });
 
