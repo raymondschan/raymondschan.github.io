@@ -138,19 +138,21 @@ Wedding.modules.TheWeddingParty = function() {
 
 
 var objectInitializer = function() {
-	var objects = $('body [package]');
-	for(var i = 0, len = objects.length; i < len; i++) {
-		var packageName = $(objects[i]).attr('package');
-		var className = $(objects[i]).attr('class');
+	var wrappers = $('body [package]');
+	for(var i = 0, len = wrappers.length; i < len; i++) {
+		var packageName = $(wrappers[i]).attr('package');
+		var className = $(wrappers[i]).attr('class');
 		var objectName = packageName + '.' + className;
 		var object = null;
 		eval('object = ' + objectName + ';');
 		if(object != null) {
-			$.ajax({
-				url: 'templates/' + objectName.replace(/\./g,'/') + '.html'
-			}).done(function(dom) {
-				$(objects[i]).html(dom);
-			});
+			(function(wrapper, objectName) {
+				$.ajax({
+					url: 'templates/' + objectName.replace(/\./g,'/') + '.html'
+				}).done(function(dom) {
+					$(wrapper).html(dom);
+				})
+			)(wrappers[i], objectName);
 		}
 	}
 };
