@@ -137,8 +137,8 @@ Wedding.modules.TheWeddingParty = function() {
 };
 
 
-var objectInitializer = function() {
-	var wrappers = $('body [package]');
+var objectInitializer = function(parentElement) {
+	var wrappers = $(parentElement).find('[package]');
 	for(var i = 0, len = wrappers.length; i < len; i++) {
 		var packageName = $(wrappers[i]).attr('package');
 		var className = $(wrappers[i]).attr('class');
@@ -151,6 +151,7 @@ var objectInitializer = function() {
 					url: 'templates/' + objectName.replace(/\./g,'/') + '.html'
 				}).done(function(dom) {
 					$(wrapper).html(dom);
+					objectInitializer($(wrapper));
 				});
 			})(wrappers[i], objectName);
 		}
@@ -158,6 +159,6 @@ var objectInitializer = function() {
 };
 
 $(document).ready(function() {
-	objectInitializer();
+	objectInitializer($(body));
 });
 
