@@ -159,6 +159,6 @@ var objectInitializer = function(parentElement) {
 };
 
 $(document).ready(function() {
-	objectInitializer($(body));
+	objectInitializer($('body'));
 });
 
