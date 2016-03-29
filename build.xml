@@ -11,6 +11,9 @@
 		<copy todir="scripts" >
 		    <fileset dir="${neighbor.dir}/scripts" includes="**" />
 		</copy>
+		<copy todir="img" >
+			<fileset dir="${neighbor.dir}/img" includes="**" />
+		</copy>
 		<copy todir="./" >
 			<fileset dir="${neighbor.dir}" includes="index.html" />
 		</copy>
