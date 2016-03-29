@@ -151,8 +151,8 @@ var objectInitializer = function() {
 					url: 'templates/' + objectName.replace(/\./g,'/') + '.html'
 				}).done(function(dom) {
 					$(wrapper).html(dom);
-				})
-			)(wrappers[i], objectName);
+				});
+			})(wrappers[i], objectName);
 		}
 	}
 };
