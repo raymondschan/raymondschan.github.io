@@ -147,7 +147,7 @@ var objectInitializer = function() {
 		eval('object = ' + objectName + ';');
 		if(object != null) {
 			$.ajax({
-				url: 'framework/template/' + objectName.replace(/\./g,'/') + '.html'
+				url: 'templates/' + objectName.replace(/\./g,'/') + '.html'
 			}).done(function(dom) {
 				$(objects[i]).html(dom);
 			});
